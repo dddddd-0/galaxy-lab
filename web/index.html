@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>银河实验室 · Galaxy Lab</title><link rel="stylesheet" href="style.css"></head>
+<body><header><a class="brand" href="/">◎ 银河实验室 <small>GALAXY LAB</small></a><span class="status">研究原型 · 尚未观测校准</span></header>
+<main><aside><p class="eyebrow">REAL SCALE / SYNTHETIC POPULATION</p><h1>一片可复现的银河。</h1><p class="intro">用同一套种子探索恒星、残骸与行星系统。位置采用真实物理单位，样本不代表全银河系的天体总数。</p>
+<label>银河种子<input id="seed" type="number" value="42" min="0" max="4294967295"></label>
+<label>绘制样本<select id="sample"><option value="6000">6,000</option><option value="12000" selected>12,000</option><option value="24000">24,000</option></select></label>
+<button id="generate">生成银河样本 ↗</button>
+<label>显示种群<select id="filter"><option value="all">全部</option><option value="star">存活恒星</option><option value="white_dwarf">白矮星</option><option value="neutron_star">中子星</option><option value="black_hole">恒星级黑洞</option></select></label>
+<div class="button-row"><button class="secondary" id="home">全景</button><button class="secondary" id="solar">太阳附近</button></div>
+<div class="legend"><span style="--c:#a8caff">● 恒星</span><span style="--c:#e8dcb6">● 白矮星</span><span style="--c:#60ebc9">● 中子星</span><span style="--c:#f29291">● 黑洞</span></div>
+<p class="hint">拖动旋转 · 滚轮或双指缩放 · 点击天体查看系统。黑洞和中子星以可视化标记显示。</p><p id="message" role="status">正在构建样本…</p></aside>
+<section class="workspace"><div class="viewport"><canvas id="galaxy" aria-label="银河系三维投影视图"></canvas><div class="viewport-label"><b id="view-title">银河系 · 斜视图</b><span id="scale">坐标单位 kpc</span></div><div class="viewport-foot">固定历元示意 · 非 N 体演化</div></div>
+<div class="metrics" id="metrics"></div>
+<div class="detail-grid"><article><div class="section-top"><h2>天体与行星系统</h2><span id="selected-id">点击星点</span></div><div id="detail"><p>选择一个合成天体，查看质量、年龄、来源和稳定生成的行星列表。</p></div><canvas id="orbits" height="180" aria-label="行星轨道示意"></canvas></article>
+<article><div class="section-top"><h2>跨种子方差</h2><button class="secondary" id="diagnose">运行诊断</button></div><div id="diagnostics"><p>固定每次抽取的初生天体数，比较演化结果和行星总数的跨种子方差。此项检查抽样行为，不能证明符合现实。</p></div></article></div>
+<details><summary>模型来源、约定与下一步数据接入</summary><p>当前为单星演化近似与示意行星发生率，未接入 Gaia、未拟合巡天选择函数、未做双星演化与轨道稳定性证明。太阳为近似坐标锚点，不计入合成样本总数。银河中心为坐标参考。</p><div id="sources"></div><p>正式观测复现和漏检补全将在接入目录、交叉匹配与选择函数之后启用；当前只提供合成演示，避免把未校准数据当作现实结果。</p></details></section></main><script src="app.js"></script></body></html>

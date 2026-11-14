@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.browser-profile/
+browser-profile/
+browser.log
+rendered.html
+server.stdout.log
+server.stderr.log
+server.pid
+/preview.png
+sampling-report.json
