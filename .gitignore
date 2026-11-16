@@ -9,4 +9,6 @@ server.stdout.log
 server.stderr.log
 server.pid
 /preview.png
+/preview-*.png
+/browser-*.log
 sampling-report.json

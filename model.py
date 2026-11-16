@@ -5,11 +5,14 @@ import random
 import statistics
 from collections import Counter
 
-VERSION = '0.1.0-illustrative'
+from real_systems import all_history_events, all_real_systems, get_real_system
+
+VERSION = '0.2.0-illustrative'
 SOURCES = [
     {'name': 'Kroupa 2001 IMF', 'url': 'https://arxiv.org/abs/astro-ph/0009005', 'use': 'Broken power-law slopes; illustrative implementation'},
     {'name': 'Gaia Archive', 'url': 'https://gea.esac.esa.int/archive/', 'use': 'Planned catalog ingestion; no Gaia objects bundled'},
-    {'name': 'NASA Exoplanet Archive', 'url': 'https://exoplanetarchive.ipac.caltech.edu/', 'use': 'Planned occurrence calibration; not yet fitted'},
+    {'name': 'NASA Exoplanet Archive', 'url': 'https://exoplanetarchive.ipac.caltech.edu/', 'use': 'Landmark system planet parameters and planned occurrence calibration; not yet fitted'},
+    {'name': 'SIMBAD', 'url': 'https://simbad.u-strasbg.fr/simbad/', 'use': 'Curated approximate positions, spectral types and distances for landmark systems'},
 ]
 
 def rng_for(seed, object_id):
@@ -88,13 +91,14 @@ def catalog(seed=42,n=12000):
     stars=[population(i,seed) for i in range(n)]
     return {'seed':seed,'model':VERSION,'status':'illustrative_not_calibrated','units':'kpc',
             'count':n,'counts':dict(Counter(s['kind'] for s in stars)), 'objects':stars,
-            'anchors':[{'id':'sun','name':'太阳','position_kpc':[8.2,0,0.0208],
-                        'source':'reference_approximation','mass_solar':1,'kind':'star',
-                        'note':'Approximate Galactocentric reference; not a Gaia catalog import; excluded from sample counts.'},
-                       {'id':'sgr-a','name':'银河系中心','position_kpc':[0,0,0],
+            'anchors':[{'id':'sgr-a','name':'银河系中心','position_kpc':[0,0,0],
                         'source':'coordinate_reference','kind':'central_reference',
                         'note':'Coordinate reference only, not a fitted SMBH model.'}],
-            'sources':SOURCES,'limitations':['No observed catalog imported','Population parameters illustrative','One progenitor per sample; no binaries','No calibrated selection function','No total-Galaxy count extrapolation']}
+            'real_systems':all_real_systems(),'history_events':all_history_events(),
+            'sources':SOURCES,'limitations':['Synthetic population parameters illustrative','One progenitor per sample; no binaries','No calibrated selection function','No total-Galaxy count extrapolation','Real landmark systems are a small curated approximate set, not a live catalog import']}
+
+def real_system(system_id):
+    return get_real_system(system_id)
 
 def ensemble(n=2000,runs=12):
     counts=[]; planet_counts=[]

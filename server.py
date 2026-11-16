@@ -5,7 +5,7 @@ from functools import lru_cache
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import urlparse, parse_qs
-from model import catalog, system, ensemble
+from model import catalog, system, ensemble, real_system
 
 ROOT=Path(__file__).resolve().parent
 
@@ -29,6 +29,11 @@ class Handler(SimpleHTTPRequestHandler):
             seed=integer('seed',42,0,2**32-1)
             if url.path=='/api/catalog': result=cached_catalog(seed,integer('n',12000,100,30000))
             elif url.path=='/api/system': result=system(integer('index',0,0,100000000000),seed)
+            elif url.path=='/api/real':
+                system_id=q.get('id',[''])[0]
+                result=real_system(system_id)
+                if result is None:
+                    self.send_error(404,'unknown real system'); return
             elif url.path=='/api/ensemble': result=ensemble(integer('n',1000,100,3000),integer('runs',8,2,16))
             else: self.send_error(404); return
             payload=json.dumps(result,ensure_ascii=False,allow_nan=False).encode('utf-8')
