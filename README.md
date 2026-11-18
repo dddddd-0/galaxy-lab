@@ -6,6 +6,9 @@
 
 [简体中文_](https://github.com/dddddd-0/galaxy-lab/edit/main/README.md) | [繁體中文](https://docs.maa.plus/zh-tw/) | [English_](https://github.com/dddddd-0/galaxy-lab/edit/main/en_.md) | [日本語](https://docs.maa.plus/ja-jp/) | [한국어](https://docs.maa.plus/ko-kr/)
 
+<-!内视->
+
+
 ## 这版有什么
 
 - 确定性的合成银河：同一种子、模型版本和对象编号得到同一颗天体。
