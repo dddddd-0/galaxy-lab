@@ -4,6 +4,8 @@
 
 一个可重复生成、可交互浏览的玩具银河系原型。Python 3.9+（已在 Windows Python 3.9.16 验证），无第三方运行依赖。网页包含可旋转的三维投影、种群筛选、单星/行星系统查询和跨种子抽样诊断。另收录一小批可点击的真实恒星系锚点，例如太阳系、比邻星、TRAPPIST-1、飞马座51、HD 209458、开普勒-452 和 PSR B1257+12；这些是手工近似数据，不是实时目录。
 
+[简体中文_](https://github.com/dddddd-0/galaxy-lab/edit/main/README.md) | [繁體中文](https://docs.maa.plus/zh-tw/) | [English_](https://github.com/dddddd-0/galaxy-lab/edit/main/en_.md) | [日本語](https://docs.maa.plus/ja-jp/) | [한국어](https://docs.maa.plus/ko-kr/)
+
 ## 这版有什么
 
 - 确定性的合成银河：同一种子、模型版本和对象编号得到同一颗天体。
