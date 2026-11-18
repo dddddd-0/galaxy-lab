@@ -7,7 +7,7 @@
 [简体中文_](https://github.com/dddddd-0/galaxy-lab/edit/main/README.md) | [繁體中文](https://docs.maa.plus/zh-tw/) | [English_](https://github.com/dddddd-0/galaxy-lab/edit/main/en_.md) | [日本語](https://docs.maa.plus/ja-jp/) | [한국어](https://docs.maa.plus/ko-kr/)
 
 <-!内视->
-
+工具性趋同，连名字都一摸一样     galaxy lab
 
 
      非线性折跃，不做人了
